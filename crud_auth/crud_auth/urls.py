@@ -16,15 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from rest_framework_jwt import views as jwt_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', include("CRUD.urls")),
 
     # path to djoser end points
-    path('auth/', include('djoser.urls')),
-    path('auth/', include('djoser.urls.jwt')),
+    path('', include('djoser.urls')),
+    path('', include('djoser.urls.jwt')),
 
     # for log in/out
     path('api-auth/', include('rest_framework.urls')),
