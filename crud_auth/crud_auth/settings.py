@@ -116,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -138,12 +138,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         # 'rest_framework.permissions.IsAdminUser',
-        # 'rest_framework.permissions.AllowAny',
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny',
+        # 'rest_framework.permissions.IsAuthenticated',
     ),
     'PAGE_SIZE': 10,
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -171,8 +171,9 @@ DJOSER = {
     'PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND': True,
     'PASSWORD_RESET_CONFIRM_URL': 'auth/reset/confirm/{uid}/{token}/',
     'TOKEN_MODEL': None,
-    # 'SERIALIZERS': {
-    #     'user_create': 'CRUD.serializers.SpecialUserCreateSerializer',
-    #     'user': 'CRUD.serializers.ReadOnlyUserSerializer',
-    # },
+    'SERIALIZERS': {
+        'user_create': 'CRUD.serializers.WriteOnlyUserSerializer',
+        'user': 'CRUD.serializers.ReadOnlyUserSerializer',
+        'current_user': 'CRUD.serializers.ReadOnlyUserSerializer',
+    },
 }
