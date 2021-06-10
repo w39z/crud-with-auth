@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import datetime
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'CRUD',
+    'main_crud',
 
     # third party package for user registration and authentication endpoints
     'djoser',
@@ -172,8 +173,8 @@ DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': 'auth/reset/confirm/{uid}/{token}/',
     'TOKEN_MODEL': None,
     'SERIALIZERS': {
-        'user_create': 'CRUD.serializers.WriteOnlyUserSerializer',
-        'user': 'CRUD.serializers.ReadOnlyUserSerializer',
-        'current_user': 'CRUD.serializers.ReadOnlyUserSerializer',
+        'user_create': 'main_crud.serializers.WriteOnlyUserSerializer',
+        'user': 'main_crud.serializers.ReadOnlyUserSerializer',
+        'current_user': 'main_crud.serializers.ReadOnlyUserSerializer',
     },
 }
